@@ -283,12 +283,12 @@ input {
 }
 .winning #card {
   position: absolute;
-  left: 50%;
+  left: 53%;
   top: 50%;
   z-index: 1;
   margin-left: -3.2rem;
   margin-top: -1.06666667rem;
-  width: 80%;
+  /*width: 80%;*/
   height: 4.26666667rem;
   background-image: url("../image/redPack/middle.png");
   -o-transition: top .5s;

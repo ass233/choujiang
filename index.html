@@ -17,6 +17,19 @@
             var width = html.getBoundingClientRect().width;
             html.style.fontSize = width / 10 + 'px';
         }
+
+  
+ window.onload = function(){
+    var arr=['./game/goldEgg2/index.html','./game/nineGrid/index.html','./game/zhuanpan/index.html'];
+    var choujiangs = document.getElementById('choujiang')
+    choujiangs.onclick = function () {
+        console.log(arr)
+       window.location.href=arr[parseInt(Math.random()*arr.length)];
+      }
+    
+ }
+
+
     </script>
 </head>
 
@@ -26,11 +39,11 @@
     <section class="active">
         <h2 class="title tit1"></h2>
         <ul>
-            <li>
-                <a href="game/doll/index.html">
+            <li id="choujiang">
+               
                     <img src="index/image/icon1.png">
                     <p>抽现金</p>
-                </a>
+               
             </li>
             <li>
                 <a href="game/goldEgg2/index.html">

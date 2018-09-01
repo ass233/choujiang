@@ -20,6 +20,8 @@ function win() {
     $winning.addClass("reback");
     setTimeout(function () {
         $card.addClass("pull");
+        var num = Math.floor(Math.random() * 4 + 1);
+        $('#card img').attr('src','../common/image/prize/'+num+'.jpg')
     }, 500);
 
     //关闭弹出层
