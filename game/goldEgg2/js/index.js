@@ -95,6 +95,41 @@ $(function () {
 
                 //记录被砸开的蛋
                 arr.push(i);//存入每个砸开蛋的下标
+                console.log(arr)
+                var tiems='';
+                arr.forEach(function(item,index){
+                    console.log(item);
+                    items = item;
+                    console.log(item);
+                });
+                if(items == '0'){
+                    console.log($('#zjd'));
+                    alert(1);
+                }else if(items == '1'){
+                    console.log($('#zjd'));
+                    alert(1);
+                }else if(items == '2'){
+                    console.log($('#zjd'));
+                    alert(2);
+                }else if(items == '3'){
+                    console.log($('#zjd'));
+                    alert(4);
+                }else if(items == '4'){
+                    console.log($('#zjd'));
+                    alert(4);
+                }else if(items == '5'){
+                    console.log($('#zjd'));
+                    alert(5);
+                }else if(items == '6'){
+                    console.log($('#zjd'));
+                    alert(6);
+                }else if(items == '7'){
+                    console.log($('#zjd'));
+                    alert(7);
+                }else if(items == '8'){
+                    console.log($('#zjd'));
+                    alert(8);
+                }
                 $.cookie("eggIndex", arr, {expires: 1});//存入cookie
             }, 600);
         }, 600);

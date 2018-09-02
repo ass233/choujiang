@@ -1,5 +1,5 @@
 $(function () {
-    var tips = ["超级豪华大礼", "100元现金红包", "50元现金红包", "20元现金红包", "谢谢参与~"],//中奖提示
+    var tips = ["超级豪华大礼", "100元现金红包", "50元现金红包", "20元现金红包","超级豪华大礼", "谢谢参与~"],//中奖提示
         $ring = $(".ring"),
         $prize = $(".prize"),//转盘
         $btn = $("#btn"),//按钮
@@ -35,30 +35,62 @@ $(function () {
             clickFn();
         }
     });
+//弹出奖品跳转页面链接概率
+function goodluck(obj, luck) {
+    var sum = 0,
+        factor = 0,
+        random = Math.random();
 
+    for(var i = luck.length - 1; i >= 0; i--) {
+        sum += luck[i]; // 统计概率总和
+    };
+    random *= sum; // 生成概率随机数
+    for(var i = luck.length - 1; i >= 0; i--) {
+        factor += luck[i];
+        if(random <= factor) return obj[i];
+    };
+    return null;
+};
+var a = ['http://www.baidu.com', 'http://www.jd.com', 'http://www.58.com', 'http://www.toutiao.com'];
+var b = [20, 5, 35, 40];
+
+console.log(goodluck(a, b));
+// 跳转链接页面概率结束
     //随机概率
     function clickFn() {
-        var data = [1, 2, 3, 4, 5, 6];//抽奖概率
+        var result = [1, 2, 3, 4, 5, 6];//抽奖概率
         //data为随机出来的结果，根据概率后的结果
-        data = data[Math.floor(Math.random() * data.length)];//1-6的随机数
+        data = result[Math.floor(Math.random() * result.length)];//1-6的随机数
         switch (data) {//中奖概率，可控。根据得到的随机数控制奖品
             case 1:
+            $('#a').attr('href',goodluck(a, b)); 
+            console.log(tips[0]);
                 rotateFn(1, 0, tips[0]);
                 break;
             case 2:
-                rotateFn(2, 0, tips[0]);
+            $('#a').attr('href',goodluck(a, b)); 
+            console.log(tips[1]);
+                rotateFn(2, 0, tips[1]);
                 break;
             case 3:
-                rotateFn(3, 120, tips[1]);
+                rotateFn(3, 120, tips[2]);
+                $('#a').attr('href',goodluck(a, b)); 
+                console.log(tips[2]);
                 break;
             case 4:
-                rotateFn(4, 120, tips[1]);
+                rotateFn(4, 120, tips[3]);
+                $('#a').attr('href',goodluck(a, b)); 
+                console.log(tips[3]);
                 break;
             case 5:
-                rotateFn(5, -60, tips[2]);
+                rotateFn(5, -60, tips[4]);
+                $('#a').attr('href',goodluck(a, b));  
+                console.log(tips[4]);
                 break;
             case 6:
-                rotateFn(6, -120, tips[3]);
+                rotateFn(6, -120, tips[5]);
+                $('#a').attr('href',goodluck(a, b)); 
+                console.log(tips[5]);
                 break;
         }
     }
@@ -110,8 +142,8 @@ $(function () {
 
     //中奖信息提示
     $("#close,.win,.btn").click(function () {
-        $prize.addClass("running");
-        init();
+       $prize.addClass("running");
+       init();
     });
 });
 

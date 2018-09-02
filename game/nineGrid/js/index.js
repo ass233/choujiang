@@ -9,7 +9,7 @@ $(function () {
         mark = 0,//标记当前位置，区间为0-7
         timer;//定时器
 
-    init();
+   // init();
     //默认动画效果
     function init() {
         timer = setInterval(function () {
@@ -47,7 +47,9 @@ $(function () {
         var random = [1, 2, 3, 4, 5, 6, 7, 8];//抽奖概率
         //data为随机出来的结果，根据概率后的结果
         random = random[Math.floor(Math.random() * random.length)];//1-8的随机数
+       
         mark += random;
+        console.log(mark)
         mark %= 8;
         //控制概率，永远抽不中谢谢参与
         if (mark === 3) {//抽中第一个谢谢参与则向前一位
@@ -67,10 +69,29 @@ $(function () {
         //停止旋转动画
         setTimeout(function () {
             console.log("中了" + mark);
+            console.log($('#card'));
+            if(mark == '0'){
+                $('#nine').attr('href','https://www.baidu.com/'); 
+            }else if(mark == '1'){
+                $('#nine').attr('href','https://www.suning.com/'); 
+            }else if(mark == '2'){
+                $('#nine').attr('href','https://www.jd.com/'); 
+            }else if(mark == '3'){
+                $('#nine').attr('href','https://www.taonao.com/'); 
+            }else if(mark == '4'){
+                $('#nine').attr('href','https://www.tmall.com/'); 
+            }else if(mark == '5'){
+                $('#nine').attr('href','https://www.58.com/'); 
+            }else if(mark == '6'){
+                $('#nine').attr('href','https://www.toutiao.com/'); 
+            }else if(mark == '7'){
+                $('#nine').attr('href','https://www.meituan.com/'); 
+            }
             setTimeout(function () {
                 bool = true;
                 win();
             }, 1000);
+
         }, 2 * random * random);
     }
 
@@ -89,7 +110,7 @@ $(function () {
     //中奖信息提示
     $("#close,.win,.btn").click(function () {
         clearInterval(timer);//关闭弹出时清除定时器
-        init();
+       // init();
     });
 
     //奖品展示
