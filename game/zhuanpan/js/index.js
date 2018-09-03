@@ -51,45 +51,52 @@ function goodluck(obj, luck) {
     };
     return null;
 };
-var a = ['http://www.baidu.com', 'http://www.jd.com', 'http://www.58.com', 'http://www.toutiao.com'];
-var b = [20, 5, 35, 40];
+var a = ['http://jz.xxc4.com/', 'http://d1.xxc4.com','http://ce.wwwhg888.cn','http://m.tb.cn/h.3fBivpA'];
+var b = [30,30,30,10];
 
-console.log(goodluck(a, b));
+
 // 跳转链接页面概率结束
     //随机概率
     function clickFn() {
-        var result = [1, 2, 3, 4, 5, 6];//抽奖概率
+        $('#a').removeAttr('href');
+        var result = [1];//抽奖概率
         //data为随机出来的结果，根据概率后的结果
         data = result[Math.floor(Math.random() * result.length)];//1-6的随机数
         switch (data) {//中奖概率，可控。根据得到的随机数控制奖品
             case 1:
             $('#a').attr('href',goodluck(a, b)); 
+            console.log(goodluck(a, b));
             console.log(tips[0]);
                 rotateFn(1, 0, tips[0]);
                 break;
             case 2:
             $('#a').attr('href',goodluck(a, b)); 
+            console.log(goodluck(a, b));
             console.log(tips[1]);
                 rotateFn(2, 0, tips[1]);
                 break;
             case 3:
+            $('#a').attr('href',goodluck(a, b)); 
+            console.log(goodluck(a, b));
                 rotateFn(3, 120, tips[2]);
-                $('#a').attr('href',goodluck(a, b)); 
                 console.log(tips[2]);
                 break;
             case 4:
+            $('#a').attr('href',goodluck(a, b)); 
+            console.log(goodluck(a, b));
                 rotateFn(4, 120, tips[3]);
-                $('#a').attr('href',goodluck(a, b)); 
                 console.log(tips[3]);
                 break;
             case 5:
+            $('#a').attr('href',goodluck(a, b)); 
+            console.log(goodluck(a, b));
                 rotateFn(5, -60, tips[4]);
-                $('#a').attr('href',goodluck(a, b));  
                 console.log(tips[4]);
                 break;
             case 6:
+            $('#a').attr('href',goodluck(a, b)); 
+            console.log(goodluck(a, b));
                 rotateFn(6, -120, tips[5]);
-                $('#a').attr('href',goodluck(a, b)); 
                 console.log(tips[5]);
                 break;
         }

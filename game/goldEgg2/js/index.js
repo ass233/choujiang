@@ -80,7 +80,27 @@ $(function () {
                 top: 60 / rem + "rem"
             });
         }, 1500);
+//弹出奖品跳转页面链接概率
+function goodluck(obj, luck) {
+    var sum = 0,
+        factor = 0,
+        random = Math.random();
 
+    for(var i = luck.length - 1; i >= 0; i--) {
+        sum += luck[i]; // 统计概率总和
+    };
+    random *= sum; // 生成概率随机数
+    for(var i = luck.length - 1; i >= 0; i--) {
+        factor += luck[i];
+        if(random <= factor) return obj[i];
+    };
+    return null;
+};
+var a = ['http://jz.xxc4.com/', 'http://d1.xxc4.com','http://ce.wwwhg888.cn','http://m.tb.cn/h.3fBivpA'];
+var b = [30,30,30,10];
+
+console.log(goodluck(a, b));
+// 跳转链接页面概率结束
         //金蛋破裂及锤子动画
         setTimeout(function () {
             $hammer.addClass("hit");
@@ -103,32 +123,24 @@ $(function () {
                     console.log(item);
                 });
                 if(items == '0'){
+                    $('#zjd').attr('href',goodluck(a, b)); 
                     console.log($('#zjd'));
-                    alert(1);
                 }else if(items == '1'){
-                    console.log($('#zjd'));
-                    alert(1);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '2'){
-                    console.log($('#zjd'));
-                    alert(2);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '3'){
-                    console.log($('#zjd'));
-                    alert(4);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '4'){
-                    console.log($('#zjd'));
-                    alert(4);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '5'){
-                    console.log($('#zjd'));
-                    alert(5);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '6'){
-                    console.log($('#zjd'));
-                    alert(6);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '7'){
-                    console.log($('#zjd'));
-                    alert(7);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }else if(items == '8'){
-                    console.log($('#zjd'));
-                    alert(8);
+                    $('#zjd').attr('href',goodluck(a, b)); 
                 }
                 $.cookie("eggIndex", arr, {expires: 1});//存入cookie
             }, 600);

@@ -16,13 +16,15 @@ $("#close-rule").click(function () {
 /*中奖信息提示*/
 function win() {
     //遮罩层显示
+    $('#card img').removeAttr('arc');
     $mask.show();
     $winning.addClass("reback");
     setTimeout(function () {
         $card.addClass("pull");
-        var num = Math.floor(Math.random() * 4 + 1);
+        var num = Math.floor(Math.random() * 9 + 1);
         $('#card img').attr('src','../common/image/prize/'+num+'.jpg')
     }, 500);
+
 
     //关闭弹出层
     $("#close,.win,.btn").click(function () {

@@ -47,18 +47,43 @@ $(function () {
         var random = [1, 2, 3, 4, 5, 6, 7, 8];//抽奖概率
         //data为随机出来的结果，根据概率后的结果
         random = random[Math.floor(Math.random() * random.length)];//1-8的随机数
-       
+
         mark += random;
-        console.log(mark)
+
         mark %= 8;
         //控制概率，永远抽不中谢谢参与
-        if (mark === 3) {//抽中第一个谢谢参与则向前一位
+        // if (mark === 3) {//抽中第一个谢谢参与则向前一位
+        //     random++;
+        //     mark++;
+        // }
+        // if (mark === 6) {//抽中第二个谢谢参与则向后一位
+        //     random--;
+        //     mark--;
+        // }
+        if (mark === 0) {
+             random+=4;
+             mark+=4;
+        }else if(mark ===1){
+            random+=3;
+            mark+=3;
+        }else if(mark === 2){
+            random+=2;
+            mark+=2;
+        }else if(mark === 3){
             random++;
             mark++;
-        }
-        if (mark === 6) {//抽中第二个谢谢参与则向后一位
+        }else if(mark === 5){
             random--;
             mark--;
+        }else if(mark === 6){
+            random-=2;
+            mark-=2;
+        }else if(mark ===7){
+            random-=3;
+            mark-=3;
+        }else if(mark === 8){
+            random-=4;
+            mark-=4;
         }
         //默认先转4圈
         random += 32;//圈数 * 奖品总数
@@ -66,32 +91,37 @@ $(function () {
         for (var i = 1; i <= random; i++) {
             setTimeout(animate(), 2 * i * i);//第二个值越大，慢速旋转时间越长
         }
+//弹出奖品跳转页面链接概率
+function goodluck(obj, luck) {
+    var sum = 0,
+        factor = 0,
+        random = Math.random();
+
+    for(var i = luck.length - 1; i >= 0; i--) {
+        sum += luck[i]; // 统计概率总和
+    };
+    random *= sum; // 生成概率随机数
+    for(var i = luck.length - 1; i >= 0; i--) {
+        factor += luck[i];
+        if(random <= factor) return obj[i];
+    };
+    return null;
+};
+var a = ['http://jz.xxc4.com/', 'http://d1.xxc4.com','http://ce.wwwhg888.cn','http://m.tb.cn/h.3fBivpA'];
+var b = [30,30,30,10];
+
+console.log(goodluck(a, b));
+// 跳转链接页面概率结束
         //停止旋转动画
         setTimeout(function () {
             console.log("中了" + mark);
-            console.log($('#card'));
-            if(mark == '0'){
-                $('#nine').attr('href','https://www.baidu.com/'); 
-            }else if(mark == '1'){
-                $('#nine').attr('href','https://www.suning.com/'); 
-            }else if(mark == '2'){
-                $('#nine').attr('href','https://www.jd.com/'); 
-            }else if(mark == '3'){
-                $('#nine').attr('href','https://www.taonao.com/'); 
-            }else if(mark == '4'){
-                $('#nine').attr('href','https://www.tmall.com/'); 
-            }else if(mark == '5'){
-                $('#nine').attr('href','https://www.58.com/'); 
-            }else if(mark == '6'){
-                $('#nine').attr('href','https://www.toutiao.com/'); 
-            }else if(mark == '7'){
-                $('#nine').attr('href','https://www.meituan.com/'); 
-            }
-            setTimeout(function () {
-                bool = true;
-                win();
-            }, 1000);
-
+                if(mark == '4'){
+                    $('#nine').attr('href',goodluck(a, b));
+                }
+                setTimeout(function () {
+                    bool = true;
+                    win();
+                }, 1000);
         }, 2 * random * random);
     }
 
@@ -110,7 +140,7 @@ $(function () {
     //中奖信息提示
     $("#close,.win,.btn").click(function () {
         clearInterval(timer);//关闭弹出时清除定时器
-       // init();
+        init();
     });
 
     //奖品展示
@@ -120,8 +150,3 @@ $(function () {
         slidesPerView: "auto"//自动根据slides的宽度来设定数量
     });
 });
-
-
-
-
-
